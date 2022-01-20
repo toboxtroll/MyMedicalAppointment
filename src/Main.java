@@ -5,6 +5,10 @@ public class Main {
          Doctor myDoctor = new Doctor("Tobias Sandoval", "Pediatra");
          System.out.println(myDoctor.name);
          System.out.println(myDoctor.speciality);
-         showMenu();
+
+         Patient myPatient = new Patient("Nico", "nico@gmail.com");
+         System.out.println(myPatient.name);
+         System.out.println(myPatient.email);
+//         showMenu();
     }
 }

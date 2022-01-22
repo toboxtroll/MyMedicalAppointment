@@ -10,7 +10,7 @@ public class Patient {
     private String blood;
 
     Patient(String name, String email){
-        System.out.println("Se crea el obejeto paciente");
+        System.out.println("Se crea el obejeto paciente : " + name);
         this.name = name;
         this.email = email;
     }

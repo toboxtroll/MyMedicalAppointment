@@ -1,4 +1,4 @@
-public class User {
+public abstract class User {
     static int id = 0;
     private String name;
     private String email;
@@ -8,6 +8,10 @@ public class User {
     public User(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public String getData(){
+        return "Nombre: " + name + "\nEmail: " + email;
     }
 
     public static int getId() {

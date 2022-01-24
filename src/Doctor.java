@@ -22,6 +22,15 @@ public class Doctor extends User {
     public ArrayList<AvailableAppointment> getAvailableAppointment(){
         return availableAppointments;
     }
+    
+    @Override
+    public String getData() {
+        String availableAppointment = null;
+        for (AvailableAppointment aA: getAvailableAppointment()) {
+            availableAppointment += "\nTime: " + aA.getTime() + " Date: " + aA.getDate();
+        }
+        return super.getData() + "\n Speciality: " + speciality + "\nAvailable Appointment: " + availableAppointment;
+    }
 
     public static class AvailableAppointment{
         int id;

@@ -41,4 +41,9 @@ public class Patient extends User {
     public void setBlood(String blood) {
         this.blood = blood;
     }
+
+    @Override
+    public String getData() {
+        return super.getData() + "\nBirthday: " + birthday + "\n Weight: " + getWeight() + "\nHeight: " + getHeight() + "\n Blood: " + blood;
+    }
 }

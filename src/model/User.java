@@ -1,3 +1,5 @@
+package model;
+
 public abstract class User {
     static int id = 0;
     private String name;

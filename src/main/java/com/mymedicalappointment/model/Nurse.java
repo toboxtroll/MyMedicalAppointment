@@ -1,4 +1,4 @@
-package model;
+package com.mymedicalappointment.model;
 
 public class Nurse extends User{
 

@@ -1,4 +1,4 @@
-package model;
+package com.mymedicalappointment.model;
 
 public abstract class User {
     static int id = 0;

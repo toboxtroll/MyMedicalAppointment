@@ -1,4 +1,4 @@
-package model;
+package com.mymedicalappointment.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

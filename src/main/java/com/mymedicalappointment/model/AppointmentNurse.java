@@ -1,19 +1,14 @@
-package model;
+package com.mymedicalappointment.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AppointmentDoctor implements ISchedulable{
+public class AppointmentNurse implements ISchedulable{
+
     private int id;
     private Patient patient;
-    private Doctor doctor;
+    private Nurse nurse;
     private Date date;
     private String time;
-    private SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-    public AppointmentDoctor(Patient patient, Doctor doctor) {
-        this.patient = patient;
-        this.doctor = doctor;
-    }
 
     public int getId() {
         return id;
@@ -31,20 +26,16 @@ public class AppointmentDoctor implements ISchedulable{
         this.patient = patient;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Nurse getNurse() {
+        return nurse;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
     }
 
-    public Date getDate(String Date) {
+    public Date getDate() {
         return date;
-    }
-
-    public String getDate() {
-        return format.format(date);
     }
 
     public void setDate(Date date) {
@@ -52,7 +43,7 @@ public class AppointmentDoctor implements ISchedulable{
     }
 
     public String getTime() {
-        return time + " hrs";
+        return time;
     }
 
     public void setTime(String time) {
@@ -61,7 +52,6 @@ public class AppointmentDoctor implements ISchedulable{
 
     @Override
     public void schedule(Date date, String time) {
-        this.date = date;
-        this.time = time;
+
     }
 }

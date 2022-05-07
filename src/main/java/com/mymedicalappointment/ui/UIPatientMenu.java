@@ -1,6 +1,7 @@
-package com.mymedicalappointment.model.ui;
+package com.mymedicalappointment.ui;
 
 import com.mymedicalappointment.model.Doctor;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;

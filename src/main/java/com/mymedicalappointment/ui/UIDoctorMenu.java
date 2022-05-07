@@ -1,4 +1,4 @@
-package com.mymedicalappointment.model.ui;
+package com.mymedicalappointment.ui;
 
 import com.mymedicalappointment.model.Doctor;
 

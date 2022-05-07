@@ -1,24 +1,60 @@
-package com.mymedicalappointment.model.ui;
+package com.mymedicalappointment.ui;
 
 import com.mymedicalappointment.model.Doctor;
 import com.mymedicalappointment.model.Patient;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static com.mymedicalappointment.service.UserService.registerUser;
 
 public class UIMenu {
     public static final String[] MONTHS = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     public static Doctor doctorlogged;
     public static Patient patientlogged;
 
-    public static void showMenu() {
+    public static void showLoginRegitryUser(){
         System.out.println("Welcome to My Appointments");
-        System.out.println("Selecciona la opción deseada");
+        System.out.println("Select Option Desired::");
+
+        int response;
+        do {
+            System.out.println("1. Login");
+            System.out.println("2. Registry");
+            System.out.println("0. Exit");
+
+            Scanner sc = new Scanner(System.in);
+            response = sc.nextInt();
+
+            switch (response) {
+                case 1:
+                    System.out.println("Login");
+                    showMenu();
+                    break;
+
+                case 2:
+                    System.out.println("Registry");
+                    showMenu();
+                    break;
+
+                case 0:
+                    System.out.println("Thank you for you visit");
+                    break;
+
+                default:
+                    System.out.println("Please select a correct answer");
+            }
+        } while (response != 0);
+    }
+
+    public static void showMenu() {
+        System.out.println("Select type of user::");
 
         int response;
         do {
             System.out.println("1. Doctor");
             System.out.println("2. Patient");
-            System.out.println("0. Salir");
+            System.out.println("0. Back");
 
             Scanner sc = new Scanner(System.in);
             response = sc.nextInt();
@@ -26,16 +62,14 @@ public class UIMenu {
             switch (response) {
                 case 1:
                     response = 0;
-                    System.out.println("Doctor");
-                    authUser(1);
+//                    authUser(1);
                     break;
                 case 2:
                     response = 0;
-                    System.out.println("Patient");
-                    authUser(2);
+                    long RegiterSuccessful = registerUser(2);
+//                    authUser(2);
                     break;
                 case 0:
-                    System.out.println("Thank you for you visit");
                     break;
                 default:
                     System.out.println("Please select a correct answer");

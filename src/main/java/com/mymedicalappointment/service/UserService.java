@@ -10,6 +10,7 @@ public class UserService {
     static Patient user;
     static UserDAO userDAO = new UserDAO();
     private static Scanner sc = new Scanner(System.in);
+    private static int numberRecord = 0;
 
 
     public static long registerUser(int typeRegister) {
@@ -20,9 +21,19 @@ public class UserService {
         user.setName(getResponseScanner("Name"));
         user.setAddress(getResponseScanner("Address"));
         user.setPhoneNumber(getResponseScanner("Phone Number"));
+        user.setBirthday(getResponseScanner("Date Birthday"));
+        user.setBlood(getResponseScanner("Type Blood"));
+        user.setHeight(Float.parseFloat(getResponseScanner("Height")));
+        user.setWeight(Float.parseFloat(getResponseScanner("Weight")));
+        
+        if (userDAO.addUser(user) > 0) {
 
-        registerDataLogin(userDAO.addUser(user));
-        return 4;
+        }
+
+        if (registerDataLogin(userDAO.addUser(user)) > 0){
+            numberRecord = registerDataLogin(userDAO.addPatient(user));
+        }
+        return numberRecord;
     }
 
     private static String getResponseScanner(String nameOption){
@@ -30,7 +41,7 @@ public class UserService {
         return response = sc.nextLine();
     }
 
-    public static void registerDataLogin(int idUser){
+    public static int registerDataLogin(int idUser){
         Login login = new Login();
         String email;
         int countEmails;
@@ -41,6 +52,8 @@ public class UserService {
 
             if (countEmails == 0){
                 login.setEmail(email);
+            } else{
+                System.out.println("Email duplicate, please enter other");
             }
 
         } while (countEmails > 0);
@@ -48,6 +61,6 @@ public class UserService {
         login.setPassword(getResponseScanner("Password"));
         login.setId(idUser);
 
-        System.out.println("Cantidad de rows " + userDAO.addLogin(login));
+        return userDAO.addLogin(login);
     }
 }

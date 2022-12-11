@@ -18,7 +18,8 @@ public class UserDAO {
         KeyHolder key = new GeneratedKeyHolder();
         jdbcTemplate.update(
         connection -> {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO public.user (username, useraddress, userphonenumber, userdate) VALUES (?, ?, ?, CURRENT_DATE)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO public.user (username, useraddress, userphonenumber, userdate) VALUES (?, ?, ?, CURRENT_DATE)",
+                    Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, patient.getName());
             ps.setString(2, patient.getAddress());
             ps.setInt(3, patient.getPhoneNumber());
@@ -30,9 +31,13 @@ public class UserDAO {
     }
 
     public Integer addLogin(Login login){
-        Integer c = jdbcTemplate.update("INSERT INTO public.login (userid, logiemail, logipassword) VALUES (?, ?, ?)", login.getId(), login.getEmail().toLowerCase(), login.getPassword());
-        System.out.println("total rows " + c);
-        return c;
+        return jdbcTemplate.update("INSERT INTO public.login (userid, logiemail, logipassword) VALUES (?, ?, ?)",
+                login.getId(), login.getEmail().toLowerCase(), login.getPassword());
+    }
+
+    public Integer addPatient(Patient patient){
+        return jdbcTemplate.update("INSERT INTO public.patient (patiid, patibirthday, patiblood, patiheight, patiweight) VALUES (?, ?, ?, ?, ?)",
+                patient.getId(), patient.getBirthday(), patient.getBlood(), patient.getHeight(), patient.getWeight());
     }
 
     public int countEmailsLogin(String email){
